@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bách Gia Các · Quản lý Page</title>
+  <link rel="stylesheet" href="/styles.css?v=20260913-stage5-assets-2" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-header">
+      <div class="header-left"><div class="brand"><span class="brand-mark"><img src="/assets/bach-gia-cac-logo.png" alt="" /></span><div><strong>Bách Gia Các</strong><small>PAGE MANAGEMENT STUDIO</small></div></div><div class="global-search"><span>⌕</span><input id="global-search" placeholder="Tìm kiếm trong Bách Gia Các..." /></div></div>
+      <nav class="ai-entry-nav" aria-label="Công cụ AI"><button class="ai-entry" data-ai-view="video">✦ Tạo Video AI</button><button class="ai-entry" data-ai-view="image">✧ Tạo Ảnh AI</button><button class="ai-entry" data-ai-view="video-editor">✎ Edit Video</button></nav>
+      <div class="header-account"><button class="notification-button" data-view="notifications" title="Thông báo">♢<span class="notification-badge hidden">0</span></button><div class="header-page-select"><span>Page đang quản trị</span><select id="workspace-page-select"><option value="">Chọn một Page...</option></select></div><div class="theme-switcher" role="group" aria-label="Chọn giao diện"><span class="theme-switcher-label">Giao diện</span><button type="button" data-theme-choice="hong-lien" aria-pressed="false">Hồng Liên</button><button type="button" data-theme-choice="bang-tien" aria-pressed="false">Băng Tiên</button></div><div class="account-chip"><span class="account-avatar">B</span><span>Bách Gia Các</span></div></div>
+    </header>
+    <main class="main">
+      <aside class="system-sidebar" aria-label="Điều hướng hệ thống"><div class="system-sidebar-head"><span>Điều hướng</span><button class="sidebar-toggle" data-sidebar-toggle title="Thu gọn menu">‹</button></div><nav class="system-nav"><button class="nav active" data-view="dashboard"><span>⌂</span><b>Tổng quan</b></button><button class="nav" data-view="pages"><span>▣</span><b>Quản lý Page</b></button><button class="nav" data-view="library"><span>▧</span><b>Thư viện</b></button><button class="nav" data-view="calendar"><span>▦</span><b>Lịch đăng</b></button><button class="nav" data-view="logs"><span>◌</span><b>Nhật ký</b></button></nav><div class="system-sidebar-foot"><span class="dot"></span><span>Local workspace</span></div></aside>
+      <div class="main-content"><div class="theme-atmosphere" aria-hidden="true"><span class="atmosphere-hero"></span><span class="atmosphere-cloud cloud-far"></span><span class="atmosphere-cloud cloud-mid"></span><span class="atmosphere-cloud cloud-near"></span><span class="atmosphere-mist"></span><span class="atmosphere-moon-glow"></span><span class="atmosphere-petals"></span><span class="atmosphere-crystals"></span><span class="atmosphere-particles"></span><span class="atmosphere-crane crane-one"></span><span class="atmosphere-crane crane-two"></span></div><div id="workspace-nav" class="workspace-top-nav"></div>
+      <header class="topbar"><div><p class="eyebrow">WORKSPACE NỘI BỘ</p><h1 id="view-title">Tổng quan</h1></div><button class="primary" id="quick-add">+ Tạo nội dung</button></header>
+      <section id="dashboard" class="view active-view"></section>
+      <section id="pages" class="view"></section>
+      <section id="library" class="view"></section>
+      <section id="calendar" class="view"></section>
+      <section id="logs" class="view"></section>
+      <section id="notifications" class="view"></section>
+      <section id="ai-workspace" class="view"></section>
+      <section id="page-workspace" class="view"></section>
+      </div>
+    </main>
+  </div>
+  <div id="modal" class="modal hidden"><div class="modal-card"><button class="close" id="close-modal">×</button><h2 id="modal-title"></h2><div id="modal-body"></div></div></div>
+    <script src="/app.js?v=20260913-stage5-assets-2"></script>
+    <script type="module" src="/world/three-world.js?v=20260914-stage8-1"></script>
+</body>
+</html>

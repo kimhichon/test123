@@ -1,0 +1,26 @@
+name: Kiem thu
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lay ma nguon
+        uses: actions/checkout@v4
+      - name: Cai Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: BachGiaCac-stage8/package-lock.json
+      - name: Cai goi
+        working-directory: BachGiaCac-stage8
+        run: npm ci
+      - name: Kiem tra va chay test
+        working-directory: BachGiaCac-stage8
+        run: npm run check

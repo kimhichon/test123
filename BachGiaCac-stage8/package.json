@@ -1,0 +1,9 @@
+{
+  "name":"pageops-local",
+  "version":"0.2.0",
+  "private":true,
+  "type":"module",
+  "engines":{"node":">=22.5.0"},
+  "scripts":{"start":"node server.mjs","build":"node --check server.mjs && node --check public/app.js && node --check src/security.mjs && node --check src/storage.mjs","test":"node --test","check":"npm run build && npm test"},
+  "dependencies":{"three":"^0.186.0"}
+}

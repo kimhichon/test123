@@ -1,0 +1,7 @@
+data/*.sqlite
+data/*.sqlite-*
+data/state.json
+data/state.json.*
+.env
+.env.*
+*.log
