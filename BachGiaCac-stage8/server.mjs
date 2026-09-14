@@ -285,7 +285,7 @@ const server=http.createServer(async(req,res)=>{
       const ext=path.extname(mediaPath).toLowerCase(),types={'.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.gif':'image/gif','.mp4':'video/mp4','.webm':'video/webm'};
       res.writeHead(200,{'Content-Type':types[ext]||'application/octet-stream','X-Content-Type-Options':'nosniff','Cache-Control':'private, no-store'});return fs.createReadStream(mediaPath).pipe(res);
     }
-    const requested=url.pathname==='/'?'/index.html':url.pathname;let filePath=safeJoin(publicDir,requested);
+    const requested=url.pathname==='/'?'index.html':url.pathname.replace(/^\/+/, '');let filePath=safeJoin(publicDir,requested);
     if(!fs.existsSync(filePath)&&!path.extname(url.pathname))filePath=path.join(publicDir,'index.html');
     if(!fs.existsSync(filePath))return send(res,404,{error:'Không tìm thấy file'});
     const ext=path.extname(filePath).toLowerCase(),types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.gif':'image/gif','.svg':'image/svg+xml'};
