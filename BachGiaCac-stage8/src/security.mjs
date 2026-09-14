@@ -34,7 +34,8 @@ export function safeName(name,fallback='upload.bin') {
   return cleaned.slice(0,180)||fallback;
 }
 export function safeJoin(root,relativePath) {
-  const base=path.resolve(root), candidate=path.resolve(base,String(relativePath||'')), rel=path.relative(base,candidate);
+  const base=path.resolve(root), input=String(relativePath||'').replace(/^\/+/, '');
+  const candidate=path.resolve(base,input), rel=path.relative(base,candidate);
   if (rel==='..'||rel.startsWith('..'+path.sep)||path.isAbsolute(rel)) throw new SecurityError('Đường dẫn không hợp lệ.',403);
   return candidate;
 }
