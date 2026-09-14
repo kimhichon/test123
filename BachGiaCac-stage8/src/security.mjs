@@ -48,7 +48,7 @@ export function newSessionId(){return crypto.randomBytes(32).toString('base64url
 export function parseCookies(header='') {
   return Object.fromEntries(String(header).split(';').map(part=>{const i=part.indexOf('=');return i<0?[part.trim(),'']:[part.slice(0,i).trim(),decodeURIComponent(part.slice(i+1).trim())]}).filter(([k])=>k));
 }
-export function isSameOrigin(req,allowed){const o=req.headers.origin;return !o||allowed.has(o);}
+export function isSameOrigin(req,allowed){const o=req.headers.origin;if(!o||o==='null')return true;try{return allowed.has(new URL(o).origin);}catch{return false;}}
 export function detectMediaKind(b) {
   if(b.length>=8&&b.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))return'image';
   if(b.length>=3&&b.subarray(0,3).equals(Buffer.from([255,216,255])))return'image';
