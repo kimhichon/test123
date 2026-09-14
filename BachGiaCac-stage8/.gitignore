@@ -2,6 +2,8 @@ data/*.sqlite
 data/*.sqlite-*
 data/state.json
 data/state.json.*
+media/*
+!media/.gitkeep
 .env
 .env.*
 *.log
