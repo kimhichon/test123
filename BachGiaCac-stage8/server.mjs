@@ -154,7 +154,7 @@ async function metaAuth(req,res,url){
   return false;
 }
 async function pageMetaApi(req,res,url){
-  const match=url.pathname.match(/^\\/api\\/page\\/([^/]+)\\/meta\\/([^/]+)$/);
+  const match=url.pathname.match(/^\/api\/page\/([^/]+)\/meta\/([^/]+)$/);
   if(req.method!=='GET'||!match)return false;
   const page=state.pages.find(p=>p.id===decodeURIComponent(match[1])||p.pageId===decodeURIComponent(match[1]));
   if(!page||!page.pageId||!page.token){send(res,404,{error:'Page chưa có token'});return true;}
