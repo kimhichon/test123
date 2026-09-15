@@ -437,7 +437,15 @@ document.addEventListener('input', (event) => { if (event.target.id === 'page-se
 document.addEventListener('change', async (event) => { if (event.target.dataset.pageGroupFilter !== undefined) { pageGroupFilter = event.target.value; pagePage = 1; renderPages(); return; } if (event.target.dataset.globalLibrarySort !== undefined) { window.globalLibrarySort = event.target.value; renderLibrary(); return; } if (event.target.dataset.librarySort !== undefined) { window.libraryAssetSort = event.target.value; renderWorkspace(); return; } if (event.target.dataset.ecosystemMediaSort !== undefined) { window.ecosystemMediaSort = event.target.value; renderWorkspace(); return; } if (event.target.dataset.pageGroup) { await api(`/api/pages/${event.target.dataset.pageGroup}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ groupId: event.target.value }) }); await refresh(); } if (event.target.dataset.setting) { const page = state.pages.find((item) => item.id === selectedPageId); if (page) await api(`/api/pages/${page.id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ settings: { [event.target.dataset.setting]: event.target.checked } }) }); } });
 $('#workspace-page-select').onchange = (event) => { if (event.target.value) navigateToWorkspace(event.target.value, 'home'); else { localStorage.removeItem('pageops-selected-page'); navigateToGlobal('pages'); } };
 window.addEventListener('popstate', () => { renderWorkspace(); applyRoute(); });
-$('#quick-add').onclick = addContent; $('#close-modal').onclick = closeModal; applyTheme(); refresh();
+function showOAuthResult() {
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get('oauth');
+  if (!status) return;
+  const message = params.get('message') || (status === 'success' ? 'Đã kết nối Meta.' : 'Kết nối Meta chưa hoàn tất.');
+  window.setTimeout(() => alert(status === 'success' ? message : 'Kết nối Meta chưa hoàn tất: ' + message), 0);
+  window.history.replaceState({}, '', window.location.pathname);
+}
+$('#quick-add').onclick = addContent; $('#close-modal').onclick = closeModal; applyTheme(); showOAuthResult(); refresh();
 
 document.addEventListener('click', (event) => {
   const toggle = event.target.closest('[data-sidebar-toggle]');
